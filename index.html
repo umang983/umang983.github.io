@@ -165,62 +165,6 @@
 
   <section class="project">
     <div class="meta">
-      <h2>Medical and sanitization robot</h2>
-      <dl>
-        <dt>Role</dt><dd>Mechanical design lead, four-person team</dd>
-        <dt>Tools</dt><dd>Siemens NX, NX Nastran, Python, Arduino</dd>
-        <dt>Where</dt><dd>B.Eng final year project</dd>
-        <dt>Funding</dt><dd>SSIP grant</dd>
-      </dl>
-    </div>
-    <div class="body">
-      <p class="lead-in">During COVID-19 there was an urgent need to reduce direct contact between healthcare workers and infected patients.</p>
-      <p>We set out to build a mobile robot that could disinfect surfaces and deliver medication, so routine ward tasks did not require someone walking into the room. I led the mechanical design: the omnidirectional base, the fluid system, and the CAD including structural validation in NX Nastran. My teammates covered the electronics and control software; I integrated the pumps with the microcontroller.</p>
-      <p>The robot had to move in confined ward spaces without room to turn, so I used a three-wheel holonomic drive and worked through the inverse kinematics for that configuration, sized the wheel diameter and motor requirements against the expected duty, and selected Al 6061 for the frame.</p>
-      <figure>
-        <img class="narrow" src="img/capstone_frame_fabricated.jpg" alt="Fabricated aluminium base frame with three omni wheels and motor mounts">
-        <figcaption>The fabricated base frame with the three omni wheels and motor mounts.</figcaption>
-      </figure>
-      <p>For sanitization I designed the circuit around a 12&nbsp;V high-pressure diaphragm pump (8&nbsp;LPM, 200&nbsp;PSI cutoff) feeding flat fan nozzles, with a solenoid pressure control valve, flow control valve, flow meter, filter and gauge, so the spray could be adjusted rather than run flat out. This is the piece closest to my later work at Bosch Rexroth, and where I first had to size a fluid system rather than just specify parts.</p>
-      <figure>
-        <img src="img/capstone_hydraulic_circuit.jpg" alt="Fluid circuit diagram: pump, solenoid pressure control valve, flow control, filter and six nozzles">
-        <figcaption>Fluid circuit for the sanitization module.</figcaption>
-      </figure>
-      <p>The robot was designed, fabricated and demonstrated. It was a student prototype rather than a hospital-ready device, and the honest limitations were runtime and the robustness of the navigation. Most of the difficulty was not in any single subsystem but in packaging them together: the tank, the pump, the delivery rack and the drivetrain all competing for the same volume and the same centre of gravity.</p>
-    </div>
-  </section>
-
-  <section class="project">
-    <div class="meta">
-      <h2>Automated conveyor sorting and inspection system</h2>
-      <dl>
-        <dt>Role</dt><dd>Build, wiring, firmware, test</dd>
-        <dt>Tools</dt><dd>Embedded C, ATmega2560 at 8&nbsp;MHz</dd>
-        <dt>Where</dt><dd>Mechatronics course project, built and tested on hardware</dd>
-      </dl>
-    </div>
-    <div class="body">
-      <p class="lead-in">Identify and classify items travelling on a conveyor by their material properties, then sort them into the correct bin.</p>
-      <p>The catch is that sensing happens well before the sorting point, so the system has to remember what each item was while it is still in transit. Three sensor stations read ferromagnetic properties and reflectivity; a stepper-driven bucket does the sorting; a DC conveyor motor runs under PWM; two push buttons handle pause and ramp-down.</p>
-      <figure>
-        <div class="duo">
-          <img src="img/conveyor_rig_top.jpg" alt="Top view of the conveyor rig with sensor stations, sorting arm and terminal strip">
-          <img src="img/conveyor_rig_bench.jpg" alt="The conveyor rig set up on a lab bench with the control board in front">
-        </div>
-        <figcaption>The rig: conveyor, sensor stations, stepper-driven sorting arm, and the terminal strip and breadboard the firmware talks to.</figcaption>
-      </figure>
-      <p>Classification runs off interrupt-driven ADC sampling of the reflectance sensor. Classified items go into a linked list used as a FIFO queue, so the system tracks each item between the sensing point and the bins and fires the bucket at the right moment. The stepper runs an S-curve acceleration profile, which I added after ramping it linearly and finding it lost steps and never reached the speed I needed.</p>
-      <figure>
-        <img src="img/conveyor_circuit_diagram.jpg" alt="Complete system circuit diagram: ATmega2560, motor drivers, sensor circuits, LCD and inputs">
-        <figcaption>Complete system circuit: ATmega2560, motor drivers, reflectance and Hall effect sensor circuits, LCD, and the pause and ramp-down inputs.</figcaption>
-      </figure>
-      <p class="result">48 items sorted in 35 seconds, no errors.</p>
-      <p>Nearly all the debugging time went into the timing relationship between the electrical and software sides, not into either alone. Faults that presented as classification errors turned out to be queue and timing errors, and the only way to tell them apart was to instrument the firmware so it reported what it believed was happening. Building the measurement before trusting the result is a habit I have carried into everything since.</p>
-    </div>
-  </section>
-
-  <section class="project">
-    <div class="meta">
       <h2>Constrained trajectory optimization</h2>
       <dl>
         <dt>Role</dt><dd>Sole developer</dd>
@@ -265,6 +209,35 @@
 
   <section class="project">
     <div class="meta">
+      <h2>Automated conveyor sorting and inspection system</h2>
+      <dl>
+        <dt>Role</dt><dd>Build, wiring, firmware, test</dd>
+        <dt>Tools</dt><dd>Embedded C, ATmega2560 at 8&nbsp;MHz</dd>
+        <dt>Where</dt><dd>Mechatronics course project, built and tested on hardware</dd>
+      </dl>
+    </div>
+    <div class="body">
+      <p class="lead-in">Identify and classify items travelling on a conveyor by their material properties, then sort them into the correct bin.</p>
+      <p>The catch is that sensing happens well before the sorting point, so the system has to remember what each item was while it is still in transit. Three sensor stations read ferromagnetic properties and reflectivity; a stepper-driven bucket does the sorting; a DC conveyor motor runs under PWM; two push buttons handle pause and ramp-down.</p>
+      <figure>
+        <div class="duo">
+          <img src="img/conveyor_rig_top.jpg" alt="Top view of the conveyor rig with sensor stations, sorting arm and terminal strip">
+          <img src="img/conveyor_rig_bench.jpg" alt="The conveyor rig set up on a lab bench with the control board in front">
+        </div>
+        <figcaption>The rig: conveyor, sensor stations, stepper-driven sorting arm, and the terminal strip and breadboard the firmware talks to.</figcaption>
+      </figure>
+      <p>Classification runs off interrupt-driven ADC sampling of the reflectance sensor. Classified items go into a linked list used as a FIFO queue, so the system tracks each item between the sensing point and the bins and fires the bucket at the right moment. The stepper runs an S-curve acceleration profile, which I added after ramping it linearly and finding it lost steps and never reached the speed I needed.</p>
+      <figure>
+        <img src="img/conveyor_circuit_diagram.jpg" alt="Complete system circuit diagram: ATmega2560, motor drivers, sensor circuits, LCD and inputs">
+        <figcaption>Complete system circuit: ATmega2560, motor drivers, reflectance and Hall effect sensor circuits, LCD, and the pause and ramp-down inputs.</figcaption>
+      </figure>
+      <p class="result">48 items sorted in 35 seconds, no errors.</p>
+      <p>Nearly all the debugging time went into the timing relationship between the electrical and software sides, not into either alone. Faults that presented as classification errors turned out to be queue and timing errors, and the only way to tell them apart was to instrument the firmware so it reported what it believed was happening. Building the measurement before trusting the result is a habit I have carried into everything since.</p>
+    </div>
+  </section>
+
+  <section class="project">
+    <div class="meta">
       <h2>F1TENTH autonomous vehicle</h2>
       <dl>
         <dt>Role</dt><dd>Sensor and actuator integration, wiring, controller tuning</dd>
@@ -284,6 +257,33 @@
         <figcaption>The vehicle, and the Champion Award. Nine-person team; the awards were to the team, not to me individually.</figcaption>
       </figure>
       <p>Our team won the Champion Award at the 2024 AI Velocity Cup, and also took the Technical Excellence Award and the Best Team Collaboration Award.</p>
+    </div>
+  </section>
+
+  <section class="project">
+    <div class="meta">
+      <h2>Medical and sanitization robot</h2>
+      <dl>
+        <dt>Role</dt><dd>Mechanical design lead, four-person team</dd>
+        <dt>Tools</dt><dd>Siemens NX, NX Nastran, Python, Arduino</dd>
+        <dt>Where</dt><dd>B.Eng final year project</dd>
+        <dt>Funding</dt><dd>SSIP grant</dd>
+      </dl>
+    </div>
+    <div class="body">
+      <p class="lead-in">During COVID-19 there was an urgent need to reduce direct contact between healthcare workers and infected patients.</p>
+      <p>We set out to build a mobile robot that could disinfect surfaces and deliver medication, so routine ward tasks did not require someone walking into the room. I led the mechanical design: the omnidirectional base, the fluid system, and the CAD including structural validation in NX Nastran. My teammates covered the electronics and control software; I integrated the pumps with the microcontroller.</p>
+      <p>The robot had to move in confined ward spaces without room to turn, so I used a three-wheel holonomic drive and worked through the inverse kinematics for that configuration, sized the wheel diameter and motor requirements against the expected duty, and selected Al 6061 for the frame.</p>
+      <figure>
+        <img class="narrow" src="img/capstone_frame_fabricated.jpg" alt="Fabricated aluminium base frame with three omni wheels and motor mounts">
+        <figcaption>The fabricated base frame with the three omni wheels and motor mounts.</figcaption>
+      </figure>
+      <p>For sanitization I designed the circuit around a 12&nbsp;V high-pressure diaphragm pump (8&nbsp;LPM, 200&nbsp;PSI cutoff) feeding flat fan nozzles, with a solenoid pressure control valve, flow control valve, flow meter, filter and gauge, so the spray could be adjusted rather than run flat out. This is the piece closest to my later work at Bosch Rexroth, and where I first had to size a fluid system rather than just specify parts.</p>
+      <figure>
+        <img src="img/capstone_hydraulic_circuit.jpg" alt="Fluid circuit diagram: pump, solenoid pressure control valve, flow control, filter and six nozzles">
+        <figcaption>Fluid circuit for the sanitization module.</figcaption>
+      </figure>
+      <p>The robot was designed, fabricated and demonstrated. It was a student prototype rather than a hospital-ready device, and the honest limitations were runtime and the robustness of the navigation. Most of the difficulty was not in any single subsystem but in packaging them together: the tank, the pump, the delivery rack and the drivetrain all competing for the same volume and the same centre of gravity.</p>
     </div>
   </section>
 
