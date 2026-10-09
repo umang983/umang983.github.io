@@ -126,6 +126,8 @@
   .pair img{width:100%;aspect-ratio:3/4;object-fit:cover}
   .pair.wide img{aspect-ratio:4/3}
   .pair.contain img{object-fit:contain;background:#fff}
+  figure.single{max-width:720px}
+  figure.single img{width:100%;background:#fff}
   .cad{max-width:640px;margin:12px 0 32px}
   .cad img{aspect-ratio:4/5;max-height:420px}
   code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em;background:var(--sheet);border:1px solid var(--line);padding:0 4px;border-radius:2px}
@@ -455,6 +457,10 @@
         <p>The solver runs on both arms with the full constraint set. A comparison of two manipulability measures under hard and soft enforcement is still converging, so I'm not drawing conclusions from it yet.</p>
       </div>
     </div>
+    <figure class="single">
+      <img src="img/thesis_3dof_trajectory.jpg" alt="3-DOF planar arm moving around a circular obstacle to a target, with faded snapshots of the arm and the elbow, wrist and end-effector paths" loading="lazy">
+      <figcaption>The 3-DOF arm swinging around a circular obstacle to reach its target, with the elbow, wrist and end-effector paths traced.</figcaption>
+    </figure>
   </article>
 
   <!-- ===== SQP vs DDP ===== -->
