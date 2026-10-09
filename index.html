@@ -3,365 +3,586 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Umang Patel — Engineering Portfolio</title>
-<meta name="description" content="Mechanical engineer working on robotics, control, and hardware that has to survive being used. Projects, results, and what actually broke.">
+<title>Umang Patel, Mechanical Engineer</title>
+<meta name="description" content="Mechanical engineer in Vancouver looking for robotics, controls and mechanical design roles. Robots I have designed and built, with photos, video and results.">
+<meta property="og:title" content="Umang Patel, Mechanical Engineer">
+<meta property="og:description" content="Robots I have designed and built, the control work behind them, and two years of industry experience.">
+<meta property="og:image" content="media/capstone_spray_poster.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#F1F3EF;
-    --ink:#16211F;
-    --muted:#5C6764;
-    --rule:#CBD1CB;
-    --pine:#2C5648;
-    --panel:#E7EAE5;
-    --measure:#8A4B2A;
+    --paper:#F3F4F6;
+    --sheet:#FFFFFF;
+    --ink:#1C2129;
+    --slate:#5B6573;
+    --line:#C8CDD5;
+    --cobalt:#1F4FD1;
+    --cobalt-ink:#FFFFFF;
+    --cobalt-soft:#E6ECFB;
+    --display:"Barlow Condensed","Arial Narrow",sans-serif;
+    --text:"Barlow",system-ui,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --paper:#15181D;
+      --sheet:#1D2128;
+      --ink:#E7EAEE;
+      --slate:#A3ACB8;
+      --line:#353B45;
+      --cobalt:#86A5FF;
+      --cobalt-ink:#0E1424;
+      --cobalt-soft:#222C44;
+    }
   }
   *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
-  body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:"IBM Plex Sans",system-ui,sans-serif;
-    font-size:17px;
-    line-height:1.62;
-  }
-  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
-  a{color:var(--pine);text-underline-offset:3px;text-decoration-thickness:1px}
-  a:focus-visible{outline:2px solid var(--pine);outline-offset:3px;border-radius:2px}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--text);font-size:18px;line-height:1.6}
+  img,video{max-width:100%;height:auto;display:block}
+  a{color:var(--cobalt);text-underline-offset:3px;text-decoration-thickness:1px}
+  a:focus-visible,.btn:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px;border-radius:3px}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+  .skip{position:absolute;left:-999px}
+  .skip:focus{left:16px;top:12px;background:var(--sheet);padding:8px 12px;z-index:10}
 
-  /* ---- masthead ---- */
-  header.top{padding:64px 0 34px}
-  h1{
-    font-size:clamp(2.1rem,5.2vw,3.2rem);
-    line-height:1.06;
-    font-weight:600;
-    letter-spacing:-0.02em;
-    margin:0 0 10px;
-  }
-  .role{
-    font-family:"IBM Plex Mono",monospace;
-    font-size:.82rem;
-    color:var(--muted);
-    margin:0 0 26px;
-  }
-  .contact{
-    display:flex;flex-wrap:wrap;gap:8px 26px;
-    font-size:.92rem;margin:0;padding:0;list-style:none;
-  }
-  .lede{
-    max-width:64ch;margin:34px 0 0;
-    font-size:1.09rem;
-  }
-  .lede p{margin:0 0 16px}
-  .note{
-    font-family:"IBM Plex Mono",monospace;
-    font-size:.78rem;color:var(--muted);
-    border-top:1px solid var(--rule);
-    padding-top:12px;margin-top:26px;max-width:64ch;
-  }
+  /* ---------- top bar ---------- */
+  .bar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}
+  .bar .who{font-family:var(--display);font-weight:600;font-size:1.25rem;color:var(--ink);text-decoration:none}
+  .bar nav ul{list-style:none;margin:0;padding:0;display:flex;gap:22px;font-size:.98rem}
+  .bar nav a{color:var(--ink);text-decoration:none}
+  .bar nav a:hover{color:var(--cobalt)}
 
-  /* ---- hero figure ---- */
-  .hero{margin:44px 0 0}
-  .hero .pair{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:end}
-  .hero img{width:100%;height:auto;display:block;background:var(--panel)}
-  figcaption{
-    font-family:"IBM Plex Mono",monospace;
-    font-size:.76rem;color:var(--muted);
-    margin-top:10px;line-height:1.5;
-  }
+  /* ---------- opening ---------- */
+  .opening{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:52px;align-items:center;padding:64px 0 48px}
+  .name{font-family:var(--display);font-weight:700;font-size:clamp(4rem,10vw,8rem);line-height:.86;letter-spacing:-.01em;margin:0 0 24px}
+  .statement{font-size:1.32rem;line-height:1.42;max-width:28ch;margin:0 0 20px}
+  .status{margin:0 0 28px;padding:12px 16px;background:var(--sheet);border:1px solid var(--line);border-left:4px solid var(--cobalt);border-radius:0 4px 4px 0;font-size:1rem;line-height:1.5;max-width:46ch}
+  .actions{display:flex;flex-wrap:wrap;gap:12px}
+  .btn{display:inline-block;padding:11px 18px;border-radius:4px;font-weight:600;font-size:1rem;text-decoration:none;border:1.5px solid var(--cobalt);color:var(--cobalt);background:transparent}
+  .btn.primary{background:var(--cobalt);color:var(--cobalt-ink)}
+  .btn:hover{filter:brightness(1.08)}
+  .opening figure{margin:0}
+  .opening video{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:4px;background:#222}
+  .opening figcaption{font-size:.88rem;color:var(--slate);margin-top:10px;line-height:1.45}
 
-  /* ---- project blocks ---- */
-  section.project{
-    border-top:1px solid var(--rule);
-    padding:52px 0 8px;
-    display:grid;
-    grid-template-columns:210px 1fr;
-    gap:0 42px;
-    align-items:start;
-  }
-  .meta{position:sticky;top:28px}
-  .meta h2{
-    font-size:1.18rem;font-weight:600;margin:0 0 14px;
-    line-height:1.25;letter-spacing:-0.01em;
-  }
-  .meta dl{margin:0;font-size:.82rem;font-family:"IBM Plex Mono",monospace;color:var(--muted)}
-  .meta dt{color:var(--pine);margin-top:11px}
-  .meta dd{margin:1px 0 0}
-  .body p{margin:0 0 17px;max-width:66ch}
-  .body p:first-child{margin-top:0}
-  .lead-in{font-weight:500}
-  .result{
-    font-family:"IBM Plex Mono",monospace;
-    font-size:.95rem;
-    background:var(--panel);
-    border-left:3px solid var(--measure);
-    padding:12px 16px;
-    margin:4px 0 20px;
-    max-width:66ch;
-  }
-  code{font-family:"IBM Plex Mono",monospace;font-size:.88em;background:var(--panel);padding:1px 4px}
-  figure{margin:24px 0 26px}
-  figure img{width:100%;height:auto;display:block;background:var(--panel)}
-  .duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:end}
-  .narrow{max-width:430px}
+  /* ---------- facts ---------- */
+  .facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:2px solid var(--ink);margin:0}
+  .facts div{padding:18px 20px 20px 0}
+  .facts div + div{padding-left:20px;border-left:1px solid var(--line)}
+  .facts dt{font-size:.85rem;color:var(--slate);margin:0 0 4px}
+  .facts dd{margin:0;font-weight:500;line-height:1.4;font-size:1rem}
 
-  /* ---- closing ---- */
-  .tools{border-top:1px solid var(--rule);padding:52px 0 10px}
-  .tools h2{font-size:1.18rem;margin:0 0 18px;font-weight:600}
-  .tools dl{margin:0;display:grid;grid-template-columns:170px 1fr;gap:10px 28px;max-width:80ch}
-  .tools dt{font-family:"IBM Plex Mono",monospace;font-size:.82rem;color:var(--pine);padding-top:2px}
-  .tools dd{margin:0}
-  footer{border-top:1px solid var(--rule);margin-top:52px;padding:34px 0 70px;font-size:.92rem}
-  footer p{margin:0 0 8px;color:var(--muted)}
+  /* ---------- section heads ---------- */
+  .section-head{padding:88px 0 0}
+  .section-head h2{font-family:var(--display);font-weight:700;font-size:clamp(2.4rem,5.5vw,3.6rem);line-height:1;margin:0 0 10px}
+  .section-head p{margin:0 0 28px;color:var(--slate);max-width:62ch}
 
-  @media (max-width:820px){
-    section.project{grid-template-columns:1fr;gap:0}
-    .meta{position:static;margin-bottom:22px}
-    .meta dl{display:grid;grid-template-columns:auto 1fr;gap:2px 14px}
-    .meta dt{margin-top:2px}
+  /* ---------- strengths ---------- */
+  .strengths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+  .strengths article{background:var(--sheet);border:1px solid var(--line);border-radius:4px;padding:22px 24px}
+  .strengths h3{font-family:var(--display);font-weight:600;font-size:1.5rem;line-height:1.1;margin:0 0 8px}
+  .strengths p{margin:0 0 12px;font-size:1rem}
+  .strengths .proof{font-size:.92rem;color:var(--slate);margin:0}
+
+  /* ---------- project tiles ---------- */
+  .tiles{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+  .tiles a{display:flex;flex-direction:column;color:var(--ink);text-decoration:none;background:var(--sheet);border:1px solid var(--line);border-radius:4px;overflow:hidden;height:100%}
+  .tiles a:hover h3,.tiles a:focus-visible h3{color:var(--cobalt)}
+  .tiles img{width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--paper)}
+  .tiles .plain{aspect-ratio:4/3;background:var(--cobalt);color:var(--cobalt-ink);display:flex;align-items:flex-end;padding:18px;font-family:var(--display);font-weight:600;font-size:1.6rem;line-height:1.05}
+  .tiles .cap{padding:14px 16px 16px}
+  .tiles h3{font-family:var(--display);font-weight:600;font-size:1.32rem;line-height:1.15;margin:0 0 4px}
+  .tiles p{margin:0;font-size:.93rem;color:var(--slate);line-height:1.45}
+
+  /* ---------- projects ---------- */
+  .project{padding:96px 0 8px;scroll-margin-top:12px}
+  .project > header{max-width:780px}
+  .kind{color:var(--cobalt);font-weight:600;font-size:.98rem;margin:0 0 6px}
+  .project h2{font-family:var(--display);font-weight:700;font-size:clamp(2.2rem,5vw,3.4rem);line-height:.98;margin:0 0 14px}
+  .summary{font-size:1.2rem;line-height:1.5;margin:0 0 28px;max-width:56ch}
+
+  .titleblock{display:grid;grid-template-columns:1fr 1fr 1.4fr 1.2fr;border:1.5px solid var(--ink);border-radius:2px;margin:0 0 40px;background:var(--sheet)}
+  .titleblock div{padding:10px 14px 12px;border-left:1px solid var(--line)}
+  .titleblock div:first-child{border-left:0}
+  .titleblock dt{font-size:.8rem;color:var(--slate);margin:0 0 2px}
+  .titleblock dd{margin:0;font-size:.96rem;font-weight:500;line-height:1.35}
+
+  .story{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start;margin-bottom:12px}
+  .story.flip > :first-child{order:2}
+  .prose p{margin:0 0 18px;max-width:62ch}
+  .prose h3{font-family:var(--display);font-weight:600;font-size:1.45rem;margin:28px 0 8px;line-height:1.15}
+  .prose h3:first-child{margin-top:0}
+  .result{background:var(--cobalt-soft);border-left:4px solid var(--cobalt);padding:14px 18px;margin:6px 0 22px;font-weight:600;font-size:1.08rem;max-width:62ch;border-radius:0 3px 3px 0}
+  .result span{display:block;font-weight:400;font-size:.92rem;color:var(--slate);margin-top:2px}
+  .learned{border-top:1px solid var(--line);padding-top:14px;color:var(--slate);font-size:1rem}
+  .learned strong{color:var(--ink);font-weight:600}
+  figure{margin:0 0 28px}
+  figure img,figure video{border-radius:4px;background:var(--sheet)}
+  .diagram img{background:#fff;border:1px solid var(--line);padding:10px}
+  figcaption{font-size:.88rem;color:var(--slate);margin-top:9px;line-height:1.45}
+  .pair{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+  .pair img{width:100%;aspect-ratio:3/4;object-fit:cover}
+  .pair.wide img{aspect-ratio:4/3}
+  .pair.contain img{object-fit:contain;background:#fff}
+  .cad{max-width:640px;margin:12px 0 32px}
+  .cad img{aspect-ratio:4/5;max-height:420px}
+  code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em;background:var(--sheet);border:1px solid var(--line);padding:0 4px;border-radius:2px}
+
+  .more{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:8px}
+  .more article{background:var(--sheet);border:1px solid var(--line);border-radius:4px;padding:22px 24px}
+  .more h3{font-family:var(--display);font-weight:600;font-size:1.45rem;line-height:1.15;margin:0 0 8px}
+  .more p{margin:0 0 12px;font-size:1rem}
+  .more .result{font-size:.98rem;margin:4px 0 0}
+
+  /* ---------- experience ---------- */
+  .jobs{border-top:2px solid var(--ink)}
+  .job{display:grid;grid-template-columns:260px minmax(0,1fr);gap:28px;padding:24px 0;border-bottom:1px solid var(--line)}
+  .job h3{font-family:var(--display);font-weight:600;font-size:1.45rem;line-height:1.15;margin:0 0 4px}
+  .job .when{color:var(--slate);font-size:.95rem;margin:0}
+  .job ul{margin:0;padding-left:1.1em}
+  .job li{margin:0 0 8px;max-width:68ch}
+  .job .title{font-weight:600;margin:0 0 8px}
+
+  /* ---------- skills ---------- */
+  .skills{margin:0;display:grid;grid-template-columns:220px minmax(0,1fr);border-top:2px solid var(--ink)}
+  .skills dt,.skills dd{padding:13px 0;border-bottom:1px solid var(--line);margin:0}
+  .skills dt{font-weight:600}
+
+  /* ---------- about + contact ---------- */
+  .about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}
+  .about p{margin:0 0 18px;max-width:62ch}
+  .contact{margin:96px 0 0;padding:44px 40px;background:var(--ink);color:var(--paper);border-radius:4px}
+  .contact h2{font-family:var(--display);font-weight:700;font-size:clamp(2.4rem,5.5vw,3.6rem);line-height:1;margin:0 0 14px}
+  .contact p{margin:0 0 24px;max-width:58ch;font-size:1.1rem}
+  .contact ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 28px;font-size:1.02rem}
+  .contact a{color:var(--paper)}
+  .contact .btn.primary{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+  footer{padding:28px 0 56px;color:var(--slate);font-size:.92rem}
+  footer p{margin:0}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    .bar nav{display:none}
+    .opening{grid-template-columns:1fr;gap:32px;padding-top:40px}
+    .facts{grid-template-columns:1fr 1fr}
+    .facts div:nth-child(3){padding-left:0;border-left:0}
+    .facts div:nth-child(n+3){border-top:1px solid var(--line)}
+    .strengths{grid-template-columns:1fr}
+    .story,.story.flip{grid-template-columns:1fr;gap:8px}
+    .story.flip > :first-child{order:0}
+    .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .titleblock{grid-template-columns:1fr 1fr}
+    .titleblock div:nth-child(3){border-left:0}
+    .titleblock div:nth-child(n+3){border-top:1px solid var(--line)}
+    .more,.about{grid-template-columns:1fr;gap:0}
+    .job{grid-template-columns:1fr;gap:10px}
   }
-  @media (max-width:560px){
-    body{font-size:16px}
-    .wrap{padding:0 20px}
-    .hero .pair,.duo{grid-template-columns:1fr}
-    .tools dl{grid-template-columns:1fr;gap:2px}
-    .tools dt{margin-top:12px}
+  @media (max-width:600px){
+    body{font-size:17px}
+    .wrap{padding:0 16px}
+    .facts{grid-template-columns:1fr}
+    .facts div,.facts div + div,.facts div:nth-child(3){padding:14px 0;border-left:0;border-top:1px solid var(--line)}
+    .facts div:first-child{border-top:0}
+    .tiles{grid-template-columns:1fr 1fr;gap:12px}
+    .tiles .cap{padding:10px 12px 12px}
+    .tiles h3{font-size:1.1rem}
+    .tiles p{display:none}
+    .tiles .plain{font-size:1.2rem;padding:12px}
+    .titleblock{grid-template-columns:1fr}
+    .titleblock div,.titleblock div:nth-child(3){border-left:0;border-top:1px solid var(--line)}
+    .titleblock div:first-child{border-top:0}
+    .pair{gap:8px}
+    .skills{grid-template-columns:1fr}
+    .skills dt{border-bottom:0;padding-bottom:0}
+    .skills dd{padding-top:2px}
+    .contact{padding:32px 20px}
   }
-  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
+<a class="skip" href="#work">Skip to projects</a>
 <div class="wrap">
 
-  <header class="top">
-    <h1>Umang Patel</h1>
-    <p class="role">Mechanical engineering MEng, University of Victoria — robotics, control, and hardware</p>
-    <ul class="contact">
-      <li><a href="mailto:umang9196@gmail.com">umang9196@gmail.com</a></li>
-      <li><a href="tel:+12365144742">+1 236 514 4742</a></li>
-      <li>Burnaby, British Columbia</li>
-      <li><a href="Umang_Patel_Engineering_Portfolio.pdf">Portfolio as PDF</a></li>
-    </ul>
-
-    <div class="lede">
-      <p>I finish a mechanical engineering master's at the University of Victoria in September 2026. Before that, a year designing hydraulic power systems at Bosch Rexroth India and a co-op at Trigon Pacific Terminals in Prince Rupert, investigating equipment failures on site at a bulk export terminal.</p>
-      <p>For each project below: what the goal was, what I did, and what actually came out of it. Where the work was a team effort or a result is still unsettled, I say so.</p>
-      <p class="note">Full project reports, thesis chapters, and source available on request. Updated September 2026.</p>
-    </div>
-
-    <div class="hero">
-      <figure>
-        <div class="pair">
-          <img src="img/capstone_cad_render.jpg" alt="CAD render of the sanitization robot assembly in Siemens NX" loading="eager">
-          <img src="img/capstone_robot_assembled.jpg" alt="The same robot as built, with delivery bins, control board and spray lines" loading="eager">
-        </div>
-        <figcaption>Final assembly in Siemens NX, and the same machine as built. Capstone project, four-person team; I led the mechanical design.</figcaption>
-      </figure>
-    </div>
+  <header class="bar">
+    <a class="who" href="#top">Umang Patel</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#work">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <section class="project">
-    <div class="meta">
-      <h2>Constrained trajectory optimization</h2>
-      <dl>
-        <dt>Role</dt><dd>Sole developer</dd>
-        <dt>Tools</dt><dd>MATLAB with CasADi, Python with Pinocchio and MuJoCo</dd>
-        <dt>Where</dt><dd>Master's research, UVic</dd>
-        <dt>Status</dt><dd>Jan 2023 to present</dd>
-      </dl>
+  <main id="top">
+  <section class="opening" aria-label="Introduction">
+    <div>
+      <h1 class="name">Umang<br>Patel</h1>
+      <p class="statement">Mechanical engineer. I design robots and machines, build them, and work on the control that makes them move well.</p>
+      <p class="status">Finishing my M.Eng at the University of Victoria. Looking for full-time roles in robotics, controls and mechanical design, in Vancouver or anywhere in Canada.</p>
+      <div class="actions">
+        <a class="btn primary" href="mailto:umang9196@gmail.com">Email me</a>
+        <a class="btn" href="Umang_Patel_Resume.pdf">Download resume</a>
+        <a class="btn" href="https://www.linkedin.com/in/umangp13/">LinkedIn</a>
+      </div>
     </div>
-    <div class="body">
-      <p class="lead-in">Motion plans for robot arms often route them through configurations where they lose the ability to move or apply force in some directions.</p>
-      <p>Keeping the arm in well-conditioned configurations while still respecting hard limits on joints, velocities, torques and obstacles is the difficult part, because the conditioning is a preference and the limits are not. I implemented a primal-dual augmented Lagrangian differential dynamic programming solver from first principles rather than calling an existing optimization library, applied to a 3-DOF planar arm and a 7-DOF Franka Panda.</p>
-      <p>Later versions reduce the KKT system with a Schur complement to deal with ill-conditioning. I added a variable timestep extension that refines the discretization where the arm is near singular, and separate branches implement ADMM-based obstacle avoidance and successive convexification.</p>
-      <p>Most of the work was diagnostic rather than derivational. I built the logging, plotting and comparison tooling used to evaluate solver versions across large batches of runs, because without it I could not tell whether a change in convergence came from the formulation, the numerics, or an implementation error. One example: a gravity compensation error that only appeared in specific joint configurations and was invisible in aggregate convergence statistics until the per-configuration breakdown existed.</p>
-      <p>The solver runs on both platforms and handles the constraint set. A comparison study across two manipulability indices and two enforcement strategies, hard constraint against soft penalty, is still converging, and the early indication that enforcement strategy matters more than index choice is not something I would defend yet.</p>
-    </div>
+    <figure>
+      <video poster="media/capstone_spray_poster.jpg" autoplay muted loop playsinline aria-label="The capstone robot spraying disinfectant across a hall during testing"><source src="media/capstone_spray.webm" type="video/webm"><source src="media/capstone_spray.mp4" type="video/mp4"></video>
+      <figcaption>My B.Eng capstone robot spraying disinfectant during testing. I led its mechanical design in a team of four.</figcaption>
+    </figure>
   </section>
 
-  <section class="project">
-    <div class="meta">
-      <h2>SQP against DDP for manipulator trajectory tracking</h2>
-      <dl>
-        <dt>Role</dt><dd>Sole author</dd>
-        <dt>Tools</dt><dd>MATLAB, both solvers written from scratch</dd>
-        <dt>Where</dt><dd>MECH 580 Engineering Optimization, UVic</dd>
-        <dt>When</dt><dd>December 2023</dd>
-      </dl>
+  <dl class="facts" aria-label="At a glance">
+    <div><dt>Education</dt><dd>M.Eng, Mechanical Engineering, University of Victoria</dd></div>
+    <div><dt>Industry</dt><dd>About two years at Bosch Rexroth India and Trigon Pacific Terminals</dd></div>
+    <div><dt>Based in</dt><dd>Vancouver, BC. Open to relocating within Canada</dd></div>
+    <div><dt>Registration</dt><dd>Engineer-in-Training eligible with EGBC</dd></div>
+  </dl>
+
+  <!-- ===== Strengths ===== -->
+  <div class="section-head">
+    <h2>Where I can help</h2>
+    <p>Most teams I'd join need one of these. Each is backed by a project or a job further down the page.</p>
+  </div>
+  <div class="strengths">
+    <article>
+      <h3>From CAD to working hardware</h3>
+      <p>I take a design through analysis, fabrication drawings and the build, and stay with it through testing.</p>
+      <p class="proof">Capstone robot, ROBOCON, Trigon washdown system</p>
+    </article>
+    <article>
+      <h3>Fluid power and pumped systems</h3>
+      <p>Sizing pumps, motors, valves and heat exchangers from pressure, flow and head-loss calculations, and drawing the circuits.</p>
+      <p class="proof">Bosch Rexroth, capstone spray system</p>
+    </article>
+    <article>
+      <h3>Motion planning and control</h3>
+      <p>Trajectory optimization and MPC for robot arms, written from first principles, plus embedded C on real rigs.</p>
+      <p class="proof">Master's thesis, adaptive MPC, conveyor cell</p>
+    </article>
+  </div>
+
+  <!-- ===== Project index ===== -->
+  <section aria-labelledby="work" >
+    <div class="section-head">
+      <h2 id="work">Projects</h2>
+      <p>Machines I've built first, then research. For each one I say what my part was, what the team did, and what came out of it.</p>
     </div>
-    <div class="body">
-      <p class="lead-in">Plan joint trajectories for a 2-DOF planar arm that track a target end-effector path, treating the arm's nonlinear dynamics as equality constraints rather than wishing them away.</p>
-      <p>I derived the manipulator dynamics from the Lagrangian, discretized them, and set the problem up as a constrained optimization minimizing a quadratic cost on states and inputs with torque limits. Then I implemented two solvers myself rather than calling a library: sequential quadratic programming, condensing the horizon into a single QP with the linearized dynamics as equality constraints, and differential dynamic programming with backward and forward passes, a line search, and a state-regularized variant. I benchmarked both against MATLAB's own <code>fmincon</code> SQP.</p>
-      <figure>
-        <div class="duo">
-          <img src="img/trajopt_circle.jpg" alt="End-effector tracking of a circular target path, comparing SQP and DDP against the target">
-          <img src="img/trajopt_square.jpg" alt="End-effector tracking of a square target path, comparing SQP and DDP against the target">
-        </div>
-        <figcaption>Target path against the SQP and DDP solutions, for a circle and a square. The DDP runs drift off the target on both, which is what the comparison was for.</figcaption>
-      </figure>
-      <p>SQP tracked the target more accurately, particularly through <code>fmincon</code>, and handled the nonlinear constraints better. My DDP was faster per iteration but less accurate, and on the circle and square it visibly leaves the path. I would not present that as a general verdict on DDP: it says as much about my implementation and the constraint handling as it does about the methods.</p>
-      <p>This project is why my master's research went where it did. Writing both solvers by hand is what made the constrained case, and what to do when constraints and dynamics fight each other, the thing I wanted to work on next.</p>
-    </div>
+    <ul class="tiles">
+      <li><a href="#capstone"><img src="img/capstone_cad_render.jpg" alt="" loading="lazy"><div class="cap"><h3>Medical and sanitization robot</h3><p>Designed, built and demonstrated. Mechanical design lead.</p></div></a></li>
+      <li><a href="#conveyor"><img src="img/conveyor_rig_top.jpg" alt="" loading="lazy"><div class="cap"><h3>Conveyor sorting cell</h3><p>48 parts sorted in 35 seconds with no errors</p></div></a></li>
+      <li><a href="#f1tenth"><img src="img/f1tenth_vehicle.jpg" alt="" loading="lazy"><div class="cap"><h3>F1TENTH race car</h3><p>Team won the 2024 AI Velocity Cup</p></div></a></li>
+      <li><a href="#robocon"><img src="img/robocon_encoder_installed.jpg" alt="" loading="lazy"><div class="cap"><h3>ROBOCON robots</h3><p>National winners in 2019, competed in Mongolia</p></div></a></li>
+      <li><a href="#thesis"><div class="plain" aria-hidden="true">Trajectory optimization solver</div><div class="cap"><h3>Master's thesis</h3><p>Constrained motion planning for a 7-DOF arm</p></div></a></li>
+      <li><a href="#sqp-ddp"><img src="img/trajopt_circle.jpg" alt="" loading="lazy"><div class="cap"><h3>SQP against DDP</h3><p>Two solvers written by hand and compared</p></div></a></li>
+    </ul>
   </section>
 
-  <section class="project">
-    <div class="meta">
-      <h2>Automated conveyor sorting and inspection system</h2>
-      <dl>
-        <dt>Role</dt><dd>Build, wiring, firmware, test</dd>
-        <dt>Tools</dt><dd>Embedded C, ATmega2560 at 8&nbsp;MHz</dd>
-        <dt>Where</dt><dd>Mechatronics course project, built and tested on hardware</dd>
-      </dl>
-    </div>
-    <div class="body">
-      <p class="lead-in">Identify and classify items travelling on a conveyor by their material properties, then sort them into the correct bin.</p>
-      <p>The catch is that sensing happens well before the sorting point, so the system has to remember what each item was while it is still in transit. Three sensor stations read ferromagnetic properties and reflectivity; a stepper-driven bucket does the sorting; a DC conveyor motor runs under PWM; two push buttons handle pause and ramp-down.</p>
-      <figure>
-        <div class="duo">
-          <img src="img/conveyor_rig_top.jpg" alt="Top view of the conveyor rig with sensor stations, sorting arm and terminal strip">
-          <img src="img/conveyor_rig_bench.jpg" alt="The conveyor rig set up on a lab bench with the control board in front">
-        </div>
-        <figcaption>The rig: conveyor, sensor stations, stepper-driven sorting arm, and the terminal strip and breadboard the firmware talks to.</figcaption>
-      </figure>
-      <p>Classification runs off interrupt-driven ADC sampling of the reflectance sensor. Classified items go into a linked list used as a FIFO queue, so the system tracks each item between the sensing point and the bins and fires the bucket at the right moment. The stepper runs an S-curve acceleration profile, which I added after ramping it linearly and finding it lost steps and never reached the speed I needed.</p>
-      <figure>
-        <img src="img/conveyor_circuit_diagram.jpg" alt="Complete system circuit diagram: ATmega2560, motor drivers, sensor circuits, LCD and inputs">
-        <figcaption>Complete system circuit: ATmega2560, motor drivers, reflectance and Hall effect sensor circuits, LCD, and the pause and ramp-down inputs.</figcaption>
-      </figure>
-      <p class="result">48 items sorted in 35 seconds, no errors.</p>
-      <p>Nearly all the debugging time went into the timing relationship between the electrical and software sides, not into either alone. Faults that presented as classification errors turned out to be queue and timing errors, and the only way to tell them apart was to instrument the firmware so it reported what it believed was happening. Building the measurement before trusting the result is a habit I have carried into everything since.</p>
-    </div>
-  </section>
-
-  <section class="project">
-    <div class="meta">
-      <h2>F1TENTH autonomous vehicle</h2>
-      <dl>
-        <dt>Role</dt><dd>Sensor and actuator integration, wiring, controller tuning</dd>
-        <dt>Tools</dt><dd>NVIDIA Jetson, ROS2</dd>
-        <dt>Where</dt><dd>UVic CAV Racing Team, BLUE Team</dd>
-        <dt>Result</dt><dd>Champion Award, 2024 AI Velocity Cup</dd>
-      </dl>
-    </div>
-    <div class="body">
-      <p class="lead-in">A one-tenth scale autonomous racing platform running a ROS2 stack on a Jetson, competing in the IEEE Victoria Section AI Velocity Cup.</p>
-      <p>I worked on sensor and actuator integration, wiring and vehicle bring-up, and controller tuning on the physical car. Most of my time went into the gap between the simulator and the vehicle: sensor noise and latency the simulation did not reproduce meant behaviour that passed in simulation failed on track. Closing that gap is what actually made the car competitive.</p>
-      <figure>
-        <div class="duo">
-          <img src="img/f1tenth_vehicle.jpg" alt="The F1TENTH vehicle with Jetson, motor controller and sensor mounts on the chassis">
-          <img src="img/f1tenth_award_champion.jpg" alt="IEEE Victoria Section Champion Award certificate for the 2024 AI Velocity Cup">
-        </div>
-        <figcaption>The vehicle, and the Champion Award. Nine-person team; the awards were to the team, not to me individually.</figcaption>
-      </figure>
-      <p>Our team won the Champion Award at the 2024 AI Velocity Cup, and also took the Technical Excellence Award and the Best Team Collaboration Award.</p>
-    </div>
-  </section>
-
-  <section class="project">
-    <div class="meta">
+  <!-- ===== Capstone ===== -->
+  <article class="project" id="capstone">
+    <header>
+      <p class="kind">B.Eng capstone, 2020 to 2021</p>
       <h2>Medical and sanitization robot</h2>
-      <dl>
-        <dt>Role</dt><dd>Mechanical design lead, four-person team</dd>
-        <dt>Tools</dt><dd>Siemens NX, NX Nastran, Python, Arduino</dd>
-        <dt>Where</dt><dd>B.Eng final year project</dd>
-        <dt>Funding</dt><dd>SSIP grant</dd>
-      </dl>
+      <p class="summary">A remote-controlled robot that disinfects surfaces and delivers medication, so healthcare workers don't have to walk into a COVID ward for routine tasks.</p>
+    </header>
+    <dl class="titleblock">
+      <div><dt>My part</dt><dd>Mechanical design lead</dd></div>
+      <div><dt>Team</dt><dd>Four students</dd></div>
+      <div><dt>Skills used</dt><dd>Siemens NX, NX Nastran FEA, MATLAB, fluid circuit design</dd></div>
+      <div><dt>Result</dt><dd>Built and demonstrated; SSIP grant funded</dd></div>
+    </dl>
+    <div class="story">
+      <div class="prose">
+        <h3>Moving in a cramped ward</h3>
+        <p>There isn't room to turn a robot around beside a hospital bed, so I used a three-wheel holonomic drive that can move in any direction. I worked out its inverse kinematics with the wheels at 90°, 210° and 330°, and wrote a MATLAB class that converts a body velocity into wheel speeds and back.</p>
+        <p>For the motors I took a 24&nbsp;kg robot with a safety factor and a rolling friction coefficient of 0.26, which needs 14.98&nbsp;kg·cm at each wheel. I picked 12&nbsp;V planetary geared motors with 22&nbsp;kg·cm stall torque and 150&nbsp;mm omni wheels.</p>
+        <h3>Choosing the frame material</h3>
+        <p>I ran NX Nastran on the base under a 500&nbsp;N load for Al&nbsp;6061, SS&nbsp;220 and SS&nbsp;410. All three were stiff enough, so we chose SS&nbsp;220 because it was cheaper and easier to get, and welded the base from stainless square pipe on a fixture.</p>
+      </div>
+      <figure>
+        <video poster="media/capstone_drive_poster.jpg" controls muted playsinline preload="none" aria-label="The robot driving across the workshop floor during testing"><source src="media/capstone_drive.webm" type="video/webm"><source src="media/capstone_drive.mp4" type="video/mp4"></video>
+        <figcaption>The robot driving on its omni-wheel base during testing.</figcaption>
+      </figure>
     </div>
-    <div class="body">
-      <p class="lead-in">During COVID-19 there was an urgent need to reduce direct contact between healthcare workers and infected patients.</p>
-      <p>We set out to build a mobile robot that could disinfect surfaces and deliver medication, so routine ward tasks did not require someone walking into the room. I led the mechanical design: the omnidirectional base, the fluid system, and the CAD including structural validation in NX Nastran. My teammates covered the electronics and control software; I integrated the pumps with the microcontroller.</p>
-      <p>The robot had to move in confined ward spaces without room to turn, so I used a three-wheel holonomic drive and worked through the inverse kinematics for that configuration, sized the wheel diameter and motor requirements against the expected duty, and selected Al 6061 for the frame.</p>
+    <div class="story flip">
+      <div class="prose">
+        <h3>The spray system</h3>
+        <p>Sanitizer comes from a 15&nbsp;litre tank. A 12&nbsp;V diaphragm pump (9&nbsp;LPM, 150&nbsp;psi cut-off) feeds six flat fan nozzles through a solenoid-operated pressure control valve, a flow control valve, a flow meter, a filter and a gauge, so the spray can be adjusted instead of running flat out. The nozzles sit on a servo-turned shaft so the spray angle can change.</p>
+        <h3>Control and electronics</h3>
+        <p>An Arduino Uno with L293D drivers runs the motors. A Raspberry Pi 3B streams the camera over Wi-Fi, and the robot is driven from a desktop or phone app. The delivery module uses two servo-driven rack and pinion sets on a linear guide.</p>
+        <p class="learned"><strong>What I'd do differently:</strong> plan the packaging earlier. The tank, pump, delivery rack and drivetrain all competed for the same space and the same centre of gravity, and that took more rework than any single subsystem.</p>
+      </div>
+      <div>
+        <figure>
+          <div class="pair">
+            <img src="img/capstone_cad_render.jpg" alt="CAD render of the robot assembly in Siemens NX" loading="lazy">
+            <img src="img/capstone_frame_fabricated.jpg" alt="The welded stainless steel base frame with three omni wheels" loading="lazy">
+          </div>
+          <figcaption>The assembly in Siemens NX, and the welded base frame.</figcaption>
+        </figure>
+        <figure class="diagram">
+          <img src="img/capstone_hydraulic_circuit.jpg" alt="Fluid circuit: reservoir, filter, pump, solenoid pressure control valve, flow control valve, flow meter, gauge and six nozzles" loading="lazy">
+          <figcaption>The fluid circuit for the spray module.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+
+  <!-- ===== Conveyor ===== -->
+  <article class="project" id="conveyor">
+    <header>
+      <p class="kind">MECH 458/554 Mechatronics, UVic, April 2023</p>
+      <h2>Conveyor sorting cell</h2>
+      <p class="summary">Identify steel, aluminium, white plastic and black plastic parts as they ride down a conveyor, and drop each one into the right bin.</p>
+    </header>
+    <dl class="titleblock">
+      <div><dt>My part</dt><dd>Build, wiring, firmware, testing</dd></div>
+      <div><dt>Team</dt><dd>Two students</dd></div>
+      <div><dt>Skills used</dt><dd>Embedded C, ATmega2560, interrupts, ADC, stepper and DC motor control</dd></div>
+      <div><dt>Result</dt><dd>48 parts in 35 seconds, no errors</dd></div>
+    </dl>
+    <div class="story">
+      <div class="prose">
+        <p>Parts are sensed well before they reach the sorter, so the system has to remember what each part is while it is still on the belt. Optical, reflectivity and Hall effect sensors form three stations. A DC motor under PWM runs the belt, a stepper turns the sorting bucket, and two push buttons pause the cell and ramp it down.</p>
+        <p>The reflectivity sensor is read with interrupt-driven ADC sampling. Each classified part goes into a linked list used as a FIFO queue, which tells the stepper what to do as each part reaches the end of the belt. The stepper first ran a linear ramp, lost steps and never reached the speed we needed, so I changed it to an S-curve acceleration profile.</p>
+        <p class="result">48 parts sorted in 35 seconds, no errors<span>System performance index of 1.37, against a pass mark of 0.8</span></p>
+        <p class="learned"><strong>What I learned:</strong> faults that looked like wrong classifications were really queue and timing errors. The only way to tell them apart was to make the firmware report what it believed was happening, and I now build that kind of instrumentation in early.</p>
+      </div>
+      <div>
+        <figure>
+          <div class="pair">
+            <img src="img/conveyor_rig_top.jpg" alt="Top view of the conveyor with sensor stations, sorting bucket and terminal strip" loading="lazy">
+            <img src="img/conveyor_rig_bench.jpg" alt="The conveyor rig on a lab bench with the control board in front" loading="lazy">
+          </div>
+          <figcaption>The cell from above, and on the bench with the controller.</figcaption>
+        </figure>
+        <figure class="diagram">
+          <img src="img/conveyor_circuit_diagram.jpg" alt="Circuit diagram: ATmega2560, motor drivers, sensor circuits, LCD and push buttons" loading="lazy">
+          <figcaption>The full circuit: microcontroller, motor drivers, sensor circuits, LCD and push buttons.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+
+  <!-- ===== F1TENTH ===== -->
+  <article class="project" id="f1tenth">
+    <header>
+      <p class="kind">UVic CAV Racing Team, May to September 2024</p>
+      <h2>F1TENTH autonomous race car</h2>
+      <p class="summary">A 1/10 scale autonomous car running ROS 2 on an NVIDIA Jetson, raced at the IEEE Victoria Section AI Velocity Cup.</p>
+    </header>
+    <dl class="titleblock">
+      <div><dt>My part</dt><dd>Integration, wiring, tuning</dd></div>
+      <div><dt>Team</dt><dd>Nine students</dd></div>
+      <div><dt>Skills used</dt><dd>ROS 2, NVIDIA Jetson, sensor integration, PID tuning</dd></div>
+      <div><dt>Result</dt><dd>Champion Award, 2024 (team)</dd></div>
+    </dl>
+    <div class="story">
+      <div class="prose">
+        <p>I helped assemble the chassis and integrate its actuators, sensors and controllers. I did wiring and sensor mounting, set up the Jetson, and tuned the PID controller on the car.</p>
+        <p>Most of my time went into the gap between the simulator and the track. Sensor noise and latency that the simulation didn't model meant code that worked in simulation failed on the car, and closing that gap is what made us competitive.</p>
+        <p class="result">Champion Award, 2024 AI Velocity Cup<span>Plus the Technical Excellence and Best Team Collaboration awards. All three went to the team.</span></p>
+      </div>
       <figure>
-        <img class="narrow" src="img/capstone_frame_fabricated.jpg" alt="Fabricated aluminium base frame with three omni wheels and motor mounts">
-        <figcaption>The fabricated base frame with the three omni wheels and motor mounts.</figcaption>
+        <div class="pair wide">
+          <img src="img/f1tenth_vehicle.jpg" alt="The F1TENTH car with Jetson, motor controller and sensor mounts" loading="lazy">
+          <img src="img/f1tenth_award_champion.jpg" alt="IEEE Victoria Section Champion Award certificate for the 2024 AI Velocity Cup" loading="lazy">
+        </div>
+        <figcaption>The car, and the Champion Award certificate.</figcaption>
       </figure>
-      <p>For sanitization I designed the circuit around a 12&nbsp;V high-pressure diaphragm pump (8&nbsp;LPM, 200&nbsp;PSI cutoff) feeding flat fan nozzles, with a solenoid pressure control valve, flow control valve, flow meter, filter and gauge, so the spray could be adjusted rather than run flat out. This is the piece closest to my later work at Bosch Rexroth, and where I first had to size a fluid system rather than just specify parts.</p>
+    </div>
+  </article>
+
+  <!-- ===== ROBOCON ===== -->
+  <article class="project" id="robocon">
+    <header>
+      <p class="kind">ROBOCON LDCE, 2018 to 2020</p>
+      <h2>ROBOCON competition robots</h2>
+      <p class="summary">Three seasons designing and building robots for the ABU Asia-Pacific Robot Contest, to fixed rules and fixed deadlines.</p>
+    </header>
+    <dl class="titleblock">
+      <div><dt>My part</dt><dd>Mechanical team member</dd></div>
+      <div><dt>Team</dt><dd>College robotics club</dd></div>
+      <div><dt>Skills used</dt><dd>Siemens NX, SolidWorks, pneumatics, fabrication, 3D printing</dd></div>
+      <div><dt>Result</dt><dd>National winners 2019; ABU ROBOCON, Mongolia; 7th in 2020</dd></div>
+    </dl>
+    <div class="story">
+      <div class="prose">
+        <p>I designed and built holonomic and vector drive robots on three- and four-wheel omni layouts, with DC motors, pneumatic circuits and aluminium frames. For competition tasks I built a kicking mechanism using springs, pneumatics and an electromagnet, and a throwing mechanism using pneumatics and DC motors. I 3D printed custom motor mounts and pneumatic fixtures, and later coached junior members.</p>
+        <h3>The odometry encoder mount</h3>
+        <p>Odometry is only as good as the contact between the encoder wheel and the floor. I designed a spring-loaded mount that keeps the encoder wheel pressed against the ground through a pivot, so it stays in contact over uneven surfaces. It's a small part, but it decided whether the robot knew where it was.</p>
+      </div>
       <figure>
-        <img src="img/capstone_hydraulic_circuit.jpg" alt="Fluid circuit diagram: pump, solenoid pressure control valve, flow control, filter and six nozzles">
-        <figcaption>Fluid circuit for the sanitization module.</figcaption>
+        <div class="pair">
+          <img src="img/robocon_encoder_detail.jpg" alt="Close-up of the spring-loaded encoder mount with its pivot" loading="lazy">
+          <img src="img/robocon_encoder_installed.jpg" alt="The encoder mount installed on the robot beside the drive motor and omni wheels" loading="lazy">
+        </div>
+        <figcaption>The spring-loaded encoder mount, and the same part on the robot.</figcaption>
       </figure>
-      <p>The robot was designed, fabricated and demonstrated. It was a student prototype rather than a hospital-ready device, and the honest limitations were runtime and the robustness of the navigation. Most of the difficulty was not in any single subsystem but in packaging them together: the tank, the pump, the delivery rack and the drivetrain all competing for the same volume and the same centre of gravity.</p>
+    </div>
+    <figure class="cad">
+      <div class="pair contain">
+        <img src="img/robocon2020_robot_side.jpg" alt="2020 robot from the side: chassis, drive wheels and upper mechanism" loading="lazy">
+        <img src="img/robocon2020_magazine_arm.jpg" alt="The ball magazine and throwing arm linkage" loading="lazy">
+      </div>
+      <figcaption>The 2020 robot in SolidWorks: chassis and drive, then the ball magazine and throwing arm.</figcaption>
+    </figure>
+  </article>
+
+  <!-- ===== Thesis ===== -->
+  <article class="project" id="thesis">
+    <header>
+      <p class="kind">Master's research, UVic</p>
+      <h2>Constrained trajectory optimization</h2>
+      <p class="summary">Planning motions for robot arms that keep them away from awkward, poorly conditioned poses while still respecting hard limits.</p>
+    </header>
+    <dl class="titleblock">
+      <div><dt>My part</dt><dd>Sole developer</dd></div>
+      <div><dt>Robots</dt><dd>3-DOF planar arm, 7-DOF Franka Panda</dd></div>
+      <div><dt>Skills used</dt><dd>MATLAB with CasADi, Python with Pinocchio and MuJoCo, optimal control</dd></div>
+      <div><dt>Status</dt><dd>In progress</dd></div>
+    </dl>
+    <div class="story">
+      <div class="prose">
+        <p>Near a singular pose a robot arm loses the ability to move or push in some directions. Staying well conditioned is a preference, while joint, velocity, torque and obstacle limits are not, and balancing the two is the hard part.</p>
+        <p>I implemented a primal-dual augmented Lagrangian DDP solver from first principles rather than calling an optimization library. Later versions reduce the KKT system with a Schur complement to handle ill-conditioning, and a variable time-step extension refines the discretization where the arm gets close to singular.</p>
+      </div>
+      <div class="prose">
+        <p>Much of the work was diagnostic. I built logging, plotting and comparison tools to test solver versions across large batches of runs, so I could tell whether a change came from the formulation, the numerics or a bug. One gravity compensation error only showed up in certain joint configurations and was invisible in the averages until I broke the results down by configuration.</p>
+        <p>The solver runs on both arms with the full constraint set. A comparison of two manipulability measures under hard and soft enforcement is still converging, so I'm not drawing conclusions from it yet.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- ===== SQP vs DDP ===== -->
+  <article class="project" id="sqp-ddp">
+    <header>
+      <p class="kind">MECH 580 Engineering Optimization, UVic, December 2023</p>
+      <h2>SQP against DDP for a robot arm</h2>
+      <p class="summary">Make a 2-DOF arm trace a circle and a square, with its nonlinear dynamics as hard constraints, and compare two solvers I wrote myself.</p>
+    </header>
+    <dl class="titleblock">
+      <div><dt>My part</dt><dd>Sole author</dd></div>
+      <div><dt>Tools</dt><dd>MATLAB</dd></div>
+      <div><dt>Skills used</dt><dd>Lagrangian dynamics, SQP, DDP, benchmarking against fmincon</dd></div>
+      <div><dt>Led to</dt><dd>My thesis topic</dd></div>
+    </dl>
+    <div class="story">
+      <div class="prose">
+        <p>I derived the arm's dynamics from the Lagrangian, discretized them, and minimized a quadratic cost under torque limits. I wrote an SQP solver that condenses the horizon into one QP, and a DDP solver with a line search and a state-regularized variant, and benchmarked both against MATLAB's <code>fmincon</code>.</p>
+        <p>SQP tracked the paths more accurately and handled the constraints better. My DDP was faster per iteration but drifted off both paths. That says as much about my implementation as about the methods, and working out why is what pointed my thesis at constrained DDP.</p>
+      </div>
+      <figure>
+        <div class="pair wide contain">
+          <img src="img/trajopt_circle.jpg" alt="Circle tracking: target path against SQP and DDP solutions" loading="lazy">
+          <img src="img/trajopt_square.jpg" alt="Square tracking: target path against SQP and DDP solutions" loading="lazy">
+        </div>
+        <figcaption>Target path against the SQP and DDP solutions. The DDP runs drift off both paths.</figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <!-- ===== Other ===== -->
+  <section class="project" id="other" aria-labelledby="other-title">
+    <header><h2 id="other-title">Smaller projects</h2></header>
+    <div class="more">
+      <article>
+        <h3>Adaptive MPC with online identification</h3>
+        <p>An MPC degrades as soon as the plant drifts from its model. I wrote the dynamics in regressor form and ran recursive least squares every timestep to update the parameters, feeding the new model back into the controller.</p>
+        <p class="result">About 63% better tracking than the non-adaptive baseline<span>0.92% final parameter error, in simulation</span></p>
+      </article>
+      <article>
+        <h3>Water heating for remote camp sites</h3>
+        <p>A two-person modelling project in MATLAB using linear graphs and state models. We modelled a solar-pumped system that stores water as head, runs it through a turbine and heats a tank.</p>
+        <p>The model showed it doesn't work: the tank empties in under ten minutes, and raising 28,000 litres by one degree would take about 32 hours. We reported that and proposed heating the water directly instead.</p>
+      </article>
     </div>
   </section>
 
-  <section class="project">
-    <div class="meta">
-      <h2>Odometry encoder assembly</h2>
-      <dl>
-        <dt>Role</dt><dd>Designer</dd>
-        <dt>Where</dt><dd>ROBOCON, three competition seasons</dd>
-        <dt>Result</dt><dd>National champions, DD ROBOCON 2019; represented India at ABU ROBOCON 2019, Mongolia</dd>
-      </dl>
+  <!-- ===== Experience ===== -->
+  <section aria-labelledby="experience">
+    <div class="section-head">
+      <h2 id="experience">Experience</h2>
+      <p>About two years in industry before my master's, both on heavy bulk material handling equipment.</p>
     </div>
-    <div class="body">
-      <p class="lead-in">Odometry on these robots was only as good as the contact between the encoder wheel and the floor, and any slip put the position estimate out.</p>
-      <p>I designed a spring-loaded mount that keeps the encoder wheel preloaded against the surface through the pivot, so it maintains contact over uneven ground and does not slip. It is a small assembly, but it is the piece where the mechanical design directly determined whether the control worked.</p>
-      <figure>
-        <div class="duo">
-          <img src="img/robocon_encoder_detail.jpg" alt="Close-up of the spring-preloaded encoder mount showing the leadscrew and pivot">
-          <img src="img/robocon_encoder_installed.jpg" alt="The encoder sub-assembly installed on the competition robot beside the drive motor and omni wheels">
+    <div class="jobs">
+      <div class="job">
+        <div><h3>Trigon Pacific Terminals</h3><p class="when">Prince Rupert, BC<br>Sep 2024 to Mar 2025</p></div>
+        <div>
+          <p class="title">Mechanical Engineering Co-op</p>
+          <ul>
+            <li>Investigated failures on stacker reclaimers, dumpers and conveyors on site under lockout/tagout, and wrote technical reports with root causes and fixes.</li>
+            <li>Designed a conveyor washdown system end to end: 3D CAD, layout, piping, material selection, supplier coordination and AutoCAD drawings for fabrication and install.</li>
+            <li>Produced fender support repair design packages, and led a drone-based volumetric survey proposal from vendor evaluation to business case.</li>
+          </ul>
         </div>
-        <figcaption>The spring-preloaded encoder mount, and the sub-assembly installed on the competition robot.</figcaption>
-      </figure>
-      <p>Across three seasons I designed, fabricated and iterated competition machines to fixed deadlines with a multidisciplinary team. I was a team member rather than team lead.</p>
-      <p>The CAD below is from the 2020 season, modelled in SolidWorks: the chassis on omni wheels, the ball magazine and the throwing arm that feeds from it, and the pneumatically actuated lift with its spring return.</p>
-      <figure>
-        <div class="duo">
-          <img src="img/robocon2020_robot_side.jpg" alt="Side view of the 2020 competition robot showing chassis, drive wheels and upper mechanism">
-          <img src="img/robocon2020_magazine_arm.jpg" alt="Side view showing the stacked ball magazine and the throwing arm linkage">
+      </div>
+      <div class="job">
+        <div><h3>Bosch Rexroth India</h3><p class="when">Ahmedabad, India<br>2021 to 2022</p></div>
+        <div>
+          <p class="title">Apprentice Engineer, Engineering Application Department</p>
+          <ul>
+            <li>Designed hydraulic power systems for stackers, reclaimers, wagon tipplers and paddle feeders.</li>
+            <li>Sized pumps, motors, valves and heat exchangers from pressure, flow and head-loss calculations, datasheets and standards.</li>
+            <li>Drafted circuits, manifold blocks and P&amp;IDs in AutoCAD, kept BOMs and costing in SAP, and supported commissioning of delivered systems.</li>
+          </ul>
         </div>
-        <figcaption>2020 season robot: chassis and drive on the left, ball magazine and throwing arm on the right.</figcaption>
-      </figure>
-      <figure>
-        <div class="duo">
-          <img src="img/robocon2020_lift_front.jpg" alt="Front view of the lift mechanism with twin pneumatic cylinders on a welded frame">
-          <img src="img/robocon2020_frame_top.jpg" alt="Top view of the frame and linkage layout">
+      </div>
+      <div class="job">
+        <div><h3>University of Victoria</h3><p class="when">Victoria, BC<br>Four terms</p></div>
+        <div>
+          <p class="title">Teaching Assistant, Mechanical Engineering</p>
+          <ul><li>MECH 242 Dynamics and MECH 430 Robotics.</li></ul>
         </div>
-        <figcaption>Lift mechanism with twin pneumatic cylinders, and the frame and linkage layout from above.</figcaption>
-      </figure>
+      </div>
     </div>
   </section>
 
-  <section class="project">
-    <div class="meta">
-      <h2>Other work</h2>
-      <dl>
-        <dt>Tools</dt><dd>MATLAB, Simulink, Python</dd>
-      </dl>
-    </div>
-    <div class="body">
-      <p class="lead-in">Adaptive model predictive control with online system identification.</p>
-      <p>An MPC degrades as soon as the plant parameters it assumes drift. I put the dynamics in regressor form and ran recursive least squares at every timestep to identify parameters online, feeding the updated model back into the controller.</p>
-      <p class="result">≈63% tracking improvement over a non-adaptive baseline, 0.92% final parameter error — in simulation, not on hardware.</p>
-      <p class="lead-in">Sustainable water heating for remote camp sites.</p>
-      <p>A two-person modelling and simulation project, work split evenly. We modelled a solar-pumped system that stores water as gravity head, runs it back through a turbine and generator, and heats a tank with an immersion heater, using elemental models, linear graphs and Government of Canada solar and temperature data for the site.</p>
-      <p>The modelling said the design does not work. The storage tank empties in under ten minutes, and at the power the turbine produces it would take about 32 hours to raise 28,000 litres by one degree. The individual subsystems behaved sensibly, the pump and motor sat in normal operating ranges, but the concept as a whole does not close. We reported that rather than tuning the write-up around it, and set out what we would do instead: heat the water directly from the panels and store far less of it.</p>
-
-      <p class="lead-in">Human-robot collaboration simulation, UR10e.</p>
-      <p>I built seven modular MATLAB and Simulink subsystem functions reproducing a published collaborative control scheme, and debugged the accompanying Python simulation, where the substantive fixes were a Procrustes SVD alignment issue and a null-space projector error. Reimplementing someone else's specification and finding where the implementation silently disagrees with it is the same activity as verifying that a system does what its documentation claims.</p>
-    </div>
-  </section>
-
-  <section class="tools">
-    <h2>Tools</h2>
-    <dl>
-      <dt>CAD and analysis</dt><dd>Siemens NX with NX Nastran, SolidWorks, AutoCAD, GD&amp;T and tolerancing</dd>
-      <dt>Simulation</dt><dd>MATLAB and Simulink, CasADi, MuJoCo, Pinocchio, batch campaigns on Digital Research Alliance of Canada clusters</dd>
-      <dt>Programming</dt><dd>Python, MATLAB, C for AVR embedded targets, C++ at a developing level, Bash</dd>
-      <dt>Robotics</dt><dd>ROS2, NVIDIA Jetson, manipulator kinematics and dynamics, sensor and actuator integration</dd>
-      <dt>Manufacturing</dt><dd>MASTERCAM and CNC (Indo-German Tool Room certified), machining, welded and bolted fabrication, 3D printing</dd>
-      <dt>Other</dt><dd>Git, Linux, SAP, Engineer-in-Training eligible with EGBC</dd>
+  <!-- ===== Skills ===== -->
+  <section aria-labelledby="skills-title">
+    <div class="section-head"><h2 id="skills-title">Skills</h2></div>
+    <dl class="skills">
+      <dt>CAD and analysis</dt><dd>Siemens NX and NX Nastran, SolidWorks, AutoCAD</dd>
+      <dt>Fluid systems</dt><dd>Hydraulic circuit design, pump and valve sizing, P&amp;IDs</dd>
+      <dt>Control and simulation</dt><dd>MPC, trajectory optimization, MATLAB and Simulink, CasADi, MuJoCo, Pinocchio</dd>
+      <dt>Programming</dt><dd>Python, MATLAB, embedded C for AVR, C++ (still developing), Bash, Git, Linux</dd>
+      <dt>Robotics</dt><dd>ROS 2, NVIDIA Jetson, manipulator kinematics and dynamics, sensor and actuator integration</dd>
+      <dt>Manufacturing</dt><dd>MASTERCAM and CNC (Indo-German Tool Room certified), welded and bolted fabrication, 3D printing, SAP</dd>
     </dl>
   </section>
 
-  <footer>
-    <p>Umang Patel — Burnaby, British Columbia</p>
-    <p><a href="mailto:umang9196@gmail.com">umang9196@gmail.com</a> · <a href="tel:+12365144742">+1 236 514 4742</a></p>
-  </footer>
+  <!-- ===== About ===== -->
+  <section aria-labelledby="about">
+    <div class="section-head"><h2 id="about">About me</h2></div>
+    <div class="about">
+      <p>I got into robots through ROBOCON at L.D. College of Engineering in Ahmedabad. Three seasons of building machines to a deadline, and watching them break, taught me most of what I know about making things work. I came to Canada for my master's, where the work moved from building machines to the math of how they should move.</p>
+      <p>Outside engineering I teach kids STEAM at Steamoji in Richmond, and I'm curious about how businesses and markets work. If you're in robotics in Vancouver, I'm always glad to meet for a coffee.</p>
+    </div>
+  </section>
+  </main>
 
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <h2 id="contact-title">Let's talk</h2>
+    <p>If you're hiring for robotics, controls or mechanical design, or you just want to talk about robots, email is the quickest way to reach me.</p>
+    <ul>
+      <li><a class="btn primary" href="mailto:umang9196@gmail.com">umang9196@gmail.com</a></li>
+      <li><a href="tel:+12365144742">+1 236 514 4742</a></li>
+      <li><a href="https://www.linkedin.com/in/umangp13/">LinkedIn</a></li>
+      <li><a href="Umang_Patel_Resume.pdf">Resume (PDF)</a></li>
+      <li><a href="Umang_Patel_Engineering_Portfolio.pdf">Portfolio (PDF)</a></li>
+    </ul>
+  </section>
+
+  <footer><p>Umang Patel, Vancouver, BC. Full project reports and code are available on request. Updated October 2026.</p></footer>
 </div>
+<script>
+  // Stop the looping opening video for anyone who has asked for reduced motion.
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('video[autoplay]').forEach(function (v) { v.removeAttribute('autoplay'); v.pause(); v.setAttribute('controls', ''); });
+  }
+</script>
 </body>
 </html>
